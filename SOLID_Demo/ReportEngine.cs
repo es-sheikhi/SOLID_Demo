@@ -10,22 +10,22 @@ namespace SOLID_Demo
     public class ReportEngine
     {
         public decimal TotalCommission { get; set; }
-
+        private Logger _logger = new();
+        private InfoReader _reader = new();
         public void EvaluateAffiliate()
         {
-            Console.WriteLine("Starting evaluation process");
-            var affiliateInfoFile = File.ReadAllText("report.json");
-            var affiliateInfo =
-                JsonSerializer.Deserialize<Affiliate>(affiliateInfoFile);
-            Console.WriteLine("File read successfully");
+            _logger.Log("Starting evaluation process");
+            var affiliateInfo = _reader.ReadInfo();
+            _logger.Log("File read successfully");
+
             switch (affiliateInfo.Level)
             {
                 case AffiliateLevel.Basic:
-                    Console.WriteLine("Calculating the basic affiliate's total commission");
+                    _logger.Log("Calculating the basic affiliate's total commission");
                     TotalCommission = affiliateInfo.TotalSales * .15m;
                     break;
                 case AffiliateLevel.Silver:
-                    Console.WriteLine("Calculating the silver affiliate's total commission");
+                    _logger.Log("Calculating the silver affiliate's total commission");
                     if (affiliateInfo.ItemsSold > 10)
                     {
                         TotalCommission = affiliateInfo.TotalSales * .25m;
@@ -36,7 +36,7 @@ namespace SOLID_Demo
                     }
                     break;
                 case AffiliateLevel.Gold:
-                    Console.WriteLine("Calculating the gold affiliate's total commission");
+                    _logger.Log("Calculating the gold affiliate's total commission");
                     if (affiliateInfo.ItemsSold > 20)
                     {
                         TotalCommission = affiliateInfo.TotalSales * .50m;
