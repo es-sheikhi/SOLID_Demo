@@ -21,34 +21,19 @@ namespace SOLID_Demo
             switch (affiliateInfo.Level)
             {
                 case AffiliateLevel.Basic:
-                    _logger.Log("Calculating the basic affiliate's total commission");
-                    TotalCommission = affiliateInfo.TotalSales * .15m;
+                    BasicAffiliateCalculus basicCalculator = 
+                        new BasicAffiliateCalculus(_logger, this);
+                    basicCalculator.Calculate(affiliateInfo);
                     break;
                 case AffiliateLevel.Silver:
-                    _logger.Log("Calculating the silver affiliate's total commission");
-                    if (affiliateInfo.ItemsSold > 10)
-                    {
-                        TotalCommission = affiliateInfo.TotalSales * .25m;
-                    }
-                    else
-                    {
-                        TotalCommission = affiliateInfo.TotalSales * .20m;
-                    }
+                    SilverAffiliateCalculus silverCalculator =
+                        new SilverAffiliateCalculus(_logger, this);
+                    silverCalculator.Calculate(affiliateInfo);
                     break;
                 case AffiliateLevel.Gold:
-                    _logger.Log("Calculating the gold affiliate's total commission");
-                    if (affiliateInfo.ItemsSold > 20)
-                    {
-                        TotalCommission = affiliateInfo.TotalSales * .50m;
-                    }
-                    else if (affiliateInfo.ItemsSold > 10)
-                    {
-                        TotalCommission = affiliateInfo.TotalSales * .40m;
-                    }
-                    else
-                    {
-                        TotalCommission = affiliateInfo.TotalSales * .30m;
-                    }
+                    GoldAffiliateCalculus goldCalculator =
+                        new GoldAffiliateCalculus(_logger, this);
+                    goldCalculator.Calculate(affiliateInfo);
                     break;
             }
         }

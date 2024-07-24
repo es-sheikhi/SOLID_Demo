@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOLID_Demo
 {
-    internal class Affiliate
+    public class Affiliate
     {
         public int AffiliateId { get; set; }
         public decimal TotalSales { get; set; }
