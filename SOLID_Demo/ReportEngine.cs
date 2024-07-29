@@ -18,24 +18,8 @@ namespace SOLID_Demo
             var affiliateInfo = _reader.ReadInfo();
             _logger.Log("File read successfully");
 
-            switch (affiliateInfo.Level)
-            {
-                case AffiliateLevel.Basic:
-                    BasicAffiliateCalculus basicCalculator = 
-                        new BasicAffiliateCalculus(_logger, this);
-                    basicCalculator.Calculate(affiliateInfo);
-                    break;
-                case AffiliateLevel.Silver:
-                    SilverAffiliateCalculus silverCalculator =
-                        new SilverAffiliateCalculus(_logger, this);
-                    silverCalculator.Calculate(affiliateInfo);
-                    break;
-                case AffiliateLevel.Gold:
-                    GoldAffiliateCalculus goldCalculator =
-                        new GoldAffiliateCalculus(_logger, this);
-                    goldCalculator.Calculate(affiliateInfo);
-                    break;
-            }
+            Calculator calculator = CalculatorFactory.Create(affiliateInfo, _logger, this);
+            calculator.Calculate(affiliateInfo);
         }
     }
 }
