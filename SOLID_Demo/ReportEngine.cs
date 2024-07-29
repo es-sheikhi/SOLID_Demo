@@ -24,7 +24,7 @@ namespace SOLID_Demo
             var affiliateInfo = _reader.ReadInfo();
             _logger.Log("File read successfully");
 
-            Calculator calculator = CalculatorFactory.Create(affiliateInfo, _logger, this);
+            Calculator calculator = Factory.CreateCalculator(affiliateInfo, _logger, this);
             calculator.Calculate(affiliateInfo);
         }
     }

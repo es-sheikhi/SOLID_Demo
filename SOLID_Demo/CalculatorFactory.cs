@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SOLID_Demo
 {
-    public class CalculatorFactory
+    public class Factory
     {
-        public static Calculator Create(Affiliate affiliateInfo, ILogger logger, IReportEngine reportEngine)
+        public static Calculator CreateCalculator(Affiliate affiliateInfo, ILogger logger, IReportEngine reportEngine)
         {
             switch (affiliateInfo.Level)
             {
@@ -22,5 +22,9 @@ namespace SOLID_Demo
                     throw new Exception("Invalid affiliate level.");
             }
         }
+        public static ILogger CreateLogger() => new Logger();
+        public static IReader CreateReader() => new InfoReader();
+        public static IReportEngine CreateReportEngine() => new SimpleReportEngine(CreateLogger(), CreateReader());
+
     }
 }

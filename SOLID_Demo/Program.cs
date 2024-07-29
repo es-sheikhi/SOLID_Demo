@@ -2,7 +2,7 @@
 
 Console.WriteLine("Starting the affiliate evaluation process");
 
-IReportEngine reportEngine = new SimpleReportEngine(new Logger(), new InfoReader());
+IReportEngine reportEngine = Factory.CreateReportEngine();
 reportEngine.EvaluateAffiliate();
 
 Console.WriteLine($"Affiliate comission is {reportEngine.TotalCommission:C}");
