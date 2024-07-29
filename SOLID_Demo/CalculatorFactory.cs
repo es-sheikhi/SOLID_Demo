@@ -8,7 +8,7 @@ namespace SOLID_Demo
 {
     public class CalculatorFactory
     {
-        public static Calculator Create(Affiliate affiliateInfo, Logger logger, ReportEngine reportEngine)
+        public static Calculator Create(Affiliate affiliateInfo, ILogger logger, IReportEngine reportEngine)
         {
             switch (affiliateInfo.Level)
             {

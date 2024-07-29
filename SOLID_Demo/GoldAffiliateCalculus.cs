@@ -8,7 +8,7 @@ namespace SOLID_Demo
 {
     public class GoldAffiliateCalculus:Calculator
     {
-        public GoldAffiliateCalculus(Logger logger, ReportEngine reportEngine):base(logger, reportEngine)
+        public GoldAffiliateCalculus(ILogger logger, IReportEngine reportEngine):base(logger, reportEngine)
         {
         }
 

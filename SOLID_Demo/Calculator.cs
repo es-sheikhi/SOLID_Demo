@@ -8,9 +8,9 @@ namespace SOLID_Demo
 {
     public abstract class Calculator
     {
-        protected readonly Logger _logger;
-        protected readonly ReportEngine _reportEngine;
-        protected Calculator(Logger logger, ReportEngine reportEngine)
+        protected readonly ILogger _logger;
+        protected readonly IReportEngine _reportEngine;
+        protected Calculator(ILogger logger, IReportEngine reportEngine)
         {
             _logger = logger;
             _reportEngine = reportEngine;

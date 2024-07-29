@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SOLID_Demo
 {
-    public class InfoReader
+    public class InfoReader : IReader
     {
         public Affiliate ReadInfo()
         {

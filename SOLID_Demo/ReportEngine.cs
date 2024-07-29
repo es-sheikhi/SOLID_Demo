@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 
 namespace SOLID_Demo
 {
-    public class ReportEngine
+    public class SimpleReportEngine : IReportEngine
     {
         public decimal TotalCommission { get; set; }
-        private Logger _logger = new();
-        private InfoReader _reader = new();
+        private ILogger _logger;
+        private IReader _reader;
+
+        public SimpleReportEngine(ILogger logger, IReader reader)
+        {
+            _logger = logger;
+            _reader = reader;
+        }
         public void EvaluateAffiliate()
         {
             _logger.Log("Starting evaluation process");
